@@ -9,7 +9,7 @@ class myghi(BaseModel):
 
 app = FastAPI()
 
-@app.get('/home')
+@app.get('/')
 async def home():
     data = {'name':'haduchau','password':'yeutaodi123'}
     return data
