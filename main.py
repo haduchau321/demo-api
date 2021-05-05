@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-import uvicorn
 from pydantic import BaseModel
 
 class myghi(BaseModel):
@@ -22,6 +21,3 @@ async def submit(out:myghi):
     print(name,passwrod,trangthai)
     return out,True
 
-
-if __name__ == '__main__':
-    uvicorn.run(app)
