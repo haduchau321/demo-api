@@ -85,4 +85,4 @@ async def root():
 
 while True:
     time.sleep(10)
-    requests.get('http://127.0.0.1:8000')
+    requests.get('https://getkey.herokuapp.com/places/')
