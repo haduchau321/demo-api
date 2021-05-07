@@ -4,8 +4,6 @@ from typing import Optional, List
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker, Session
 from sqlalchemy import Boolean, Column, Float, String, Integer
-import requests
-import time
 
 app = FastAPI()
 
@@ -83,6 +81,4 @@ def get_place_view(place_id: int, db: Session = Depends(get_db)):
 async def root():
     return {'message': 'Hello World!'}
 
-while True:
-    time.sleep(10)
-    requests.get('https://getkey.herokuapp.com/places/')
+
