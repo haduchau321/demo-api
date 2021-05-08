@@ -4,22 +4,21 @@ from typing import Optional, List
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker, Session
 from sqlalchemy import Boolean, Column, Float, String, Integer
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+import os
+import psycopg2
 
 app = FastAPI()
 
+
+# DATABASE_URL = os.environ['DATABASE_URL']
+
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
 # SqlAlchemy Setup
-SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
-# SQLALCHEMY_DATABASE_URL = "postgres://vztbtnsawpretu:5e5f7e92555c0bf3bd914bb5598ef3a020631a3b6832e5f65c2d8337075a2635@ec2-3-234-85-177.compute-1.amazonaws.com:5432/de2v2355mcq1je"
-
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-)
+SQLALCHEMY_DATABASE_URL = 'sqlite+pysqlite:///./db.sqlite3:'
+engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True, future=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 Base = declarative_base()
-
 
 def get_db():
     db = SessionLocal()
@@ -88,5 +87,3 @@ def get_place_view(place_id: int, db: Session = Depends(get_db)):
 @app.get('/')
 async def root():
     return {'message': 'Hello World!'}
-
-
