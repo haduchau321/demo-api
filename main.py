@@ -2,17 +2,10 @@ from fastapi import FastAPI, Depends
 from pydantic import BaseModel
 from typing import Optional, List
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker, Session
-from sqlalchemy import Boolean, Column, Float, String, Integer
-import os
-import psycopg2
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 app = FastAPI()
-
-
-# DATABASE_URL = os.environ['DATABASE_URL']
-
-# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 # SqlAlchemy Setup
 SQLALCHEMY_DATABASE_URL = 'sqlite+pysqlite:///./db.sqlite3:'
