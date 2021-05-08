@@ -11,9 +11,15 @@ app = FastAPI()
 
 # SqlAlchemy Setup
 SQLALCHEMY_DATABASE_URL = 'postgres://bwhjkpyafudttl:b8a75004e797b334f9d08cd69e58e0f4f13308e31d2bfbcce89eece3e5ac6d81@ec2-54-167-152-185.compute-1.amazonaws.com:5432/d9mqtqbg2k8c14'
-engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True, future=True)
+# SQLALCHEMY_DATABASE_URL = "postgres://vztbtnsawpretu:5e5f7e92555c0bf3bd914bb5598ef3a020631a3b6832e5f65c2d8337075a2635@ec2-3-234-85-177.compute-1.amazonaws.com:5432/de2v2355mcq1je"
+
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL,
+)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
 Base = declarative_base()
+
 
 def get_db():
     db = SessionLocal()
