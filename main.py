@@ -8,7 +8,7 @@ from sqlalchemy import Boolean, Column, Float, String, Integer
 app = FastAPI()
 
 # SqlAlchemy Setup
-SQLALCHEMY_DATABASE_URL = 'sqlite+pysqlite:///./db.sqlite3:'
+SQLALCHEMY_DATABASE_URL = 'postgres://bwhjkpyafudttl:b8a75004e797b334f9d08cd69e58e0f4f13308e31d2bfbcce89eece3e5ac6d81@ec2-54-167-152-185.compute-1.amazonaws.com:5432/d9mqtqbg2k8c14'
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True, future=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
